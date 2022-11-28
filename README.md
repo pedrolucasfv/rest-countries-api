@@ -7,7 +7,7 @@ This project use a boilerplate of a course called [React Avançado](https://reac
 
 
 ### Notion
-I have decided to create a "notion" for each project I do, in order to have a record.
+I have decided to create a "notion" for each project I do, in order to have a record and details of projects.
 
 Notion Rest Countries API: https://pedrolucasfv.notion.site/REST-COUNTRIES-API-6305992152264f339868919a61da23e2
 
