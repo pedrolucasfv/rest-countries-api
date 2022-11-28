@@ -38,15 +38,3 @@ describe('<CountryCard />', () => {
     })
   })
 })
-
-/** 
-expect(screen.getByRole('img', { name: props.title })).toHaveAttribute(
-  'src',
-  props.img
-)
-expect(screen.getByText('$235.00')).toHaveStyle({
-  textDecoration: 'line-through'
-})*/
-/**expect(screen.getByRole('heading', { name: /germany/i })).toHaveStyle({
-      background: 'hsl(0, 0%, 100%)'
-    })*/

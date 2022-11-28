@@ -4,7 +4,7 @@ export type ButtonProps = {
   children: React.ReactNode
   color?: 'light' | 'dark'
   icon?: JSX.Element
-  minimal: boolean
+  minimal?: boolean
 }
 
 const Button = ({
