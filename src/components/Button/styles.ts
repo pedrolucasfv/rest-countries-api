@@ -3,7 +3,7 @@ import { ButtonProps } from '.'
 
 type WrapperProps = {
   hasIcon?: boolean
-} & Pick<ButtonProps, 'color'>
+} & Pick<ButtonProps, 'color' | 'minimal'>
 
 const wrapperModifiers = {
   light: (theme: DefaultTheme) => css`
@@ -27,11 +27,19 @@ const wrapperModifiers = {
         margin-left: ${theme.spacings.xxsmall};
       }
     }
+  `,
+  minimal: (theme: DefaultTheme) => css`
+    background: none;
+    color: ${theme.colors.white};
+    border: none;
+    &:hover {
+      color: ${theme.colors.veryDarkBlue2};
+    }
   `
 }
 
 export const Wrapper = styled.button<WrapperProps>`
-  ${({ theme, color, hasIcon }) => css`
+  ${({ theme, color, hasIcon, minimal }) => css`
     padding: 1rem 4.2rem;
     display: flex;
     letter-spacing: 0.3rem;
@@ -42,7 +50,8 @@ export const Wrapper = styled.button<WrapperProps>`
     cursor: pointer;
     border-radius: 0.8rem;
     text-decoration: none;
-    ${!!color && wrapperModifiers[color](theme)}
+    ${!!color && wrapperModifiers[color](theme)};
     ${!!hasIcon && wrapperModifiers.withIcon(theme)};
+    ${!!minimal && wrapperModifiers.minimal(theme)};
   `}
 `
