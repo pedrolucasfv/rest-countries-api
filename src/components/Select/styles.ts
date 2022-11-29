@@ -1,4 +1,19 @@
-import styled from 'styled-components'
+import styled, { css, DefaultTheme } from 'styled-components'
+
+type ColorProps = {
+  color: 'light' | 'dark'
+}
+
+const wrapperModifiers = {
+  light: (theme: DefaultTheme) => css`
+    color: ${theme.colors.darkBlue};
+    background-color: ${theme.colors.white};
+  `,
+  dark: (theme: DefaultTheme) => css`
+    color: ${theme.colors.white};
+    background-color: ${theme.colors.darkBlue};
+  `
+}
 
 export const Wrapper = styled.main`
   font-size: 2rem;
@@ -8,37 +23,25 @@ export const Wrapper = styled.main`
 
 export const Title = styled.div``
 
-export const SelectBox = styled.div`
-  height: 5rem;
-  padding: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  svg {
-    height: 3rem;
-  }
-`
-export const Items = styled.div`
-  padding: 1.5rem;
-`
+export const SelectBox = styled.div<ColorProps>`
+  ${({ color, theme }) => css`
+    height: 5rem;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 0.4rem;
 
-/** &::after {
-    content: '';
-    position: absolute;
-    display: block;
-    height: 0.3rem;
-    background-color: ${theme.colors.primary};
-    animation: hoverAnimation 0.2s forwards;
-  }
-
-  @keyframes hoverAnimation {
-    from {
-      width: 0;
-      left: 50%;
+    ${wrapperModifiers[color](theme)}
+    svg {
+      height: 3rem;
     }
-    to {
-      width: 100%;
-      left: 0;
-    }
-  } 
-**/
+  `}
+`
+export const Items = styled.div<ColorProps>`
+  ${({ color, theme }) => css`
+    margin-top: 0.5rem;
+    padding: 1.5rem;
+    ${wrapperModifiers[color](theme)}
+  `}
+`
