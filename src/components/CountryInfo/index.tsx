@@ -12,6 +12,7 @@ export type CountryInfoProps = {
   currencies: string
   languages: string
   borderCountries: string
+  color?: 'dark' | 'light'
 }
 
 const CountryInfo = ({
@@ -24,9 +25,10 @@ const CountryInfo = ({
   subRegion,
   topLevelDomain,
   nativeName,
-  borderCountries
+  borderCountries,
+  color = 'light'
 }: CountryInfoProps) => (
-  <S.Wrapper>
+  <S.Wrapper color={color}>
     <S.CountryName>{countryName}</S.CountryName>
     <S.Info>
       <S.NativeName>
@@ -64,7 +66,8 @@ const CountryInfo = ({
     </S.Info>
     <S.BorderCountries>
       <span>BorderCountries: </span>
-      <Button>{borderCountries}</Button>
+      {color == 'light' && <Button color="light">{borderCountries}</Button>}
+      {color == 'dark' && <Button color="dark">{borderCountries}</Button>}
     </S.BorderCountries>
   </S.Wrapper>
 )

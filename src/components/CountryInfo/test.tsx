@@ -27,4 +27,23 @@ describe('<CountryInfo />', () => {
     expect(screen.getByText('Berlin')).toBeInTheDocument()
     expect(screen.getByText('Europe')).toBeInTheDocument()
   })
+  it('should render light mode by default', () => {
+    const { container } = renderWithTheme(<CountryInfo {...args} />)
+
+    expect(container.firstChild).toHaveStyle({
+      color: 'hsl(209, 23%, 22%)'
+    })
+  })
+  it('should render in dark mode', () => {
+    const { container } = renderWithTheme(
+      <CountryInfo {...args} color="dark" />
+    )
+
+    expect(container.firstChild).toHaveStyle({
+      color: 'hsl(0, 0%, 100%)'
+    })
+  })
 })
+
+//'hsl(209, 23%, 22%)'
+//'hsl(0, 0%, 100%)'
