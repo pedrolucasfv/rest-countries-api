@@ -1,9 +1,13 @@
 import { Story, Meta } from '@storybook/react'
-import Select from '.'
+import Select, { SelectProps } from '.'
 
 export default {
   title: 'Select',
-  component: Select
+  component: Select,
+  args: {
+    title: 'Filter By Region',
+    items: ['Africa', 'America', 'Asia']
+  }
 } as Meta
 
-export const Default: Story = () => <Select />
+export const Default: Story<SelectProps> = (args) => <Select {...args} />

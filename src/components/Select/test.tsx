@@ -2,12 +2,17 @@ import { render, screen } from '@testing-library/react'
 
 import Select from '.'
 
+const args = {
+  title: 'Filter By Region',
+  items: ['Africa', 'America', 'Asia']
+}
+
 describe('<Select />', () => {
   it('should render the heading', () => {
-    const { container } = render(<Select />)
+    render(<Select {...args} />)
 
-    expect(screen.getByRole('heading', { name: /Select/i })).toBeInTheDocument()
-
-    expect(container.firstChild).toMatchSnapshot()
+    expect(
+      screen.getByRole('heading', { name: /Filter By Region/i })
+    ).toBeInTheDocument()
   })
 })
