@@ -33,3 +33,12 @@ describe('<Select />', () => {
     })
   })
 })
+
+/*     PARA FAZER O TESTE DE CLICK
+it('should render in the dark mode', () => {
+  const { container } = renderWithTheme(<Select {...args} color="dark" />)
+
+  fireEvent.click(screen.getByRole('heading', /filter by region/i))
+  expect(element.getAttribute('aria-hidden')).toBe('true')
+})
+*/

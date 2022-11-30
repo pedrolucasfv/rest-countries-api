@@ -17,7 +17,11 @@ const Select = ({ items, title, color = 'light' }: SelectProps) => {
         <ArrowDownS />
       </S.SelectBox>
       {isOpen && (
-        <S.Items color={color} onClick={() => setIsOpen(false)}>
+        <S.Items
+          aria-hidden={!isOpen}
+          color={color}
+          onClick={() => setIsOpen(false)}
+        >
           {items.map((item, index) => (
             <S.Title key={index}> {item} </S.Title>
           ))}

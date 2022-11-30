@@ -1,13 +1,28 @@
-import styled from 'styled-components'
-import theme from 'styles/theme'
+import styled, { css, DefaultTheme } from 'styled-components'
 
-export const Wrapper = styled.main`
-  background-color: ${theme.colors.darkBlue};
-  color: ${theme.colors.white};
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 4rem;
+type WrapperProps = {
+  color: 'light' | 'dark'
+}
+
+const wrapperModifiers = {
+  light: (theme: DefaultTheme) => css`
+    background-color: ${theme.colors.white};
+    color: ${theme.colors.darkBlue};
+  `,
+  dark: (theme: DefaultTheme) => css`
+    background-color: ${theme.colors.darkBlue};
+    color: ${theme.colors.white};
+  `
+}
+
+export const Wrapper = styled.main<WrapperProps>`
+  ${({ theme, color }) => css`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 4rem;
+    ${wrapperModifiers[color](theme)}
+  `}
 `
 
 export const Logo = styled.h2`

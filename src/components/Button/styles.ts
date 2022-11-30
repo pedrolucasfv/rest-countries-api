@@ -30,7 +30,6 @@ const wrapperModifiers = {
   `,
   minimal: (theme: DefaultTheme) => css`
     background: none;
-    color: ${theme.colors.white};
     border: none;
     &:hover {
       color: ${theme.colors.veryDarkBlue2};
