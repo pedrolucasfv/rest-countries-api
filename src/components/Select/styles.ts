@@ -43,5 +43,15 @@ export const Items = styled.div<ColorProps>`
     margin-top: 0.5rem;
     padding: 1.5rem;
     ${wrapperModifiers[color](theme)}
+    animation: clickAnimation 0.3s forwards;
+
+    @keyframes clickAnimation {
+      from {
+        height: 0;
+      }
+      to {
+        height: 17rem;
+      }
+    }
   `}
 `

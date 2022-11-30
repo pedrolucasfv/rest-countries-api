@@ -6,7 +6,7 @@ export default {
   component: Select,
   args: {
     title: 'Filter By Region',
-    items: ['Africa', 'America', 'Asia']
+    items: ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
   }
 } as Meta
 
