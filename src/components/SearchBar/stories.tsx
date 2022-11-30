@@ -1,9 +1,14 @@
 import { Story, Meta } from '@storybook/react'
-import SearchBar from '.'
+import SearchBar, { SearchBarProps } from '.'
 
 export default {
   title: 'SearchBar',
-  component: SearchBar
+  component: SearchBar,
+  args: {
+    label: 'Search',
+    name: 'search',
+    initialValue: 'Search for countries'
+  }
 } as Meta
 
-export const Default: Story = () => <SearchBar />
+export const Default: Story<SearchBarProps> = (args) => <SearchBar {...args} />

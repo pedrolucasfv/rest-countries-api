@@ -1,15 +1,21 @@
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
+import { renderWithTheme } from 'utils/tests/helpers'
 
 import SearchBar from '.'
 
 describe('<SearchBar />', () => {
-  it('should render the heading', () => {
-    const { container } = render(<SearchBar />)
+  it('Renders without Label', () => {
+    renderWithTheme(<SearchBar />)
 
-    expect(
-      screen.getByRole('heading', { name: /SearchBar/i })
-    ).toBeInTheDocument()
-
-    expect(container.firstChild).toMatchSnapshot()
+    expect(screen.queryByLabelText('Label')).not.toBeInTheDocument()
   })
 })
+
+/** 
+it('Renders with Label', () => {
+  renderWithTheme(<SearchBar label="Label" name="Label" />)
+
+  expect(screen.getByLabelText('Label')).toBeInTheDocument()
+})
+
+*/
