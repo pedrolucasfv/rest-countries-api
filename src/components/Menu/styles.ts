@@ -8,10 +8,12 @@ const wrapperModifiers = {
   light: (theme: DefaultTheme) => css`
     background-color: ${theme.colors.white};
     color: ${theme.colors.darkBlue};
+    box-shadow: 0px 1px 6px #505050;
   `,
   dark: (theme: DefaultTheme) => css`
     background-color: ${theme.colors.darkBlue};
     color: ${theme.colors.white};
+    box-shadow: 0px 1px 6px #111;
   `
 }
 

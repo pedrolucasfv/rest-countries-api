@@ -11,10 +11,10 @@ describe('<Button />', () => {
       color: 'hsl(207, 26%, 17%)'
     })
   })
-  it('should render label with light color by default', () => {
+  it('should render label with dark color', () => {
     renderWithTheme(<Button color="dark">back</Button>)
     expect(screen.getByRole('button', { name: /back/i })).toHaveStyle({
-      background: 'hsl(207, 26%, 17%)',
+      background: 'hsl(209, 23%, 22%)',
       color: 'hsl(0, 0%, 100%)'
     })
   })

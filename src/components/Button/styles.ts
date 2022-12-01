@@ -13,7 +13,7 @@ const wrapperModifiers = {
     font-size: ${theme.font.sizes.small};
   `,
   dark: (theme: DefaultTheme) => css`
-    background: ${theme.colors.veryDarkBlue};
+    background: ${theme.colors.darkBlue};
     color: ${theme.colors.white};
     border: 0.2rem solid ${theme.colors.white};
     height: ${theme.spacings.xlarge};
