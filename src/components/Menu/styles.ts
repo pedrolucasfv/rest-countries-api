@@ -30,3 +30,5 @@ export const Wrapper = styled.main<WrapperProps>`
 export const Logo = styled.h2`
   font-size: 2.2rem;
 `
+
+export const Button = styled.div``
