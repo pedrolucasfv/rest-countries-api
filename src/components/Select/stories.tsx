@@ -1,12 +1,12 @@
 import { Story, Meta } from '@storybook/react'
 import Select, { SelectProps } from '.'
+import items from './mock'
 
 export default {
   title: 'Select',
   component: Select,
   args: {
-    title: 'Filter By Region',
-    items: ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
+    items
   }
 } as Meta
 

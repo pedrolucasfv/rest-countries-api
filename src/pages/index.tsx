@@ -1,8 +1,10 @@
-import CountryPage, { CountryPageProps } from 'templates/CountryPage'
-import countryInfoMocks from '../components/CountryInfo/mock'
+//import CountryPage, { CountryPageProps } from 'templates/CountryPage'
+import HomePage, { HomePageProps } from 'templates/HomePage'
+//import countryInfoMocks from '../components/CountryInfo/mock'
+import selectRegionMocks from '../components/Select/mock'
 
-export default function Home(props: CountryPageProps) {
-  return <CountryPage {...props} color="dark" />
+export default function Home(props: HomePageProps) {
+  return <HomePage {...props} color="dark" />
 }
 
 // ATENÇÃO:
@@ -17,7 +19,9 @@ export function getServerSideProps() {
   // retorno dos dados
   return {
     props: {
-      country: countryInfoMocks
+      selectRegion: selectRegionMocks
     }
   }
 }
+
+//<CountryPage {...props} color="dark" />
