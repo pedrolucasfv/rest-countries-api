@@ -14,7 +14,11 @@ type StateProps = {
   }
 }
 
-const CardGroup = () => {
+export type CardGroupProps = {
+  countrySelected: (country: string) => void
+}
+
+const CardGroup = ({ countrySelected }: CardGroupProps) => {
   const [countries, setCountries] = useState<StateProps[]>([])
   useEffect(() => {
     fetch('https://restcountries.com/v3.1/all')
@@ -23,11 +27,15 @@ const CardGroup = () => {
         setCountries(data)
       })
   }, [])
+
   return (
     <S.Wrapper>
       {countries.map((resp) => {
         return (
-          <S.Cards key={resp.name.common}>
+          <S.Cards
+            key={resp.name.common}
+            onClick={() => countrySelected(resp.name.common)}
+          >
             <CountryCard
               countryName={resp.name.common}
               population={resp.population}

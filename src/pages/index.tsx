@@ -1,5 +1,5 @@
 //import CountryPage, { CountryPageProps } from 'templates/CountryPage'
-import HomePage, { HomePageProps } from 'templates/HomePage'
+import HomePage, { HomePageProps } from '../templates/HomePage'
 //import countryInfoMocks from '../components/CountryInfo/mock'
 import selectRegionMocks from '../components/Select/mock'
 
@@ -24,4 +24,5 @@ export function getServerSideProps() {
   }
 }
 
+//<HomePage {...props} color="dark" />
 //<CountryPage {...props} color="dark" />

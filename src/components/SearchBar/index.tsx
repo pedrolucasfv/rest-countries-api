@@ -6,6 +6,7 @@ export type SearchBarProps = {
   onInputChange?: (value: string) => void
   label?: string
   initialValue?: string
+  color: 'light' | 'dark'
 } & InputHTMLAttributes<HTMLInputElement>
 
 const SearchBar = ({
@@ -13,6 +14,7 @@ const SearchBar = ({
   initialValue,
   onInputChange,
   name,
+  color,
   ...props
 }: SearchBarProps) => {
   const [value, setValue] = useState(initialValue)
@@ -26,8 +28,7 @@ const SearchBar = ({
 
   return (
     <S.Wrapper>
-      {!!label && <S.Label>{label}</S.Label>}
-      <S.InputWrapper>
+      <S.InputWrapper color={color}>
         <S.Icon>
           <Search />
         </S.Icon>

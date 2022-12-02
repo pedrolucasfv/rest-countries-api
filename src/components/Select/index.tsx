@@ -6,9 +6,15 @@ export type SelectProps = {
   title: string
   items: string[]
   color?: 'light' | 'dark'
+  regionSelected: (region: string) => void
 }
 
-const Select = ({ items, title, color = 'light' }: SelectProps) => {
+const Select = ({
+  items,
+  title,
+  color = 'light',
+  regionSelected
+}: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <S.Wrapper>
@@ -23,7 +29,10 @@ const Select = ({ items, title, color = 'light' }: SelectProps) => {
           onClick={() => setIsOpen(false)}
         >
           {items.map((item, index) => (
-            <S.Title key={index}> {item} </S.Title>
+            <S.Title key={index} onClick={() => regionSelected(item)}>
+              {' '}
+              {item}{' '}
+            </S.Title>
           ))}
         </S.Items>
       )}

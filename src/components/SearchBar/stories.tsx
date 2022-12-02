@@ -7,7 +7,8 @@ export default {
   args: {
     label: 'Search',
     name: 'search',
-    initialValue: 'Search for countries'
+    initialValue: 'Search for countries',
+    color: 'light'
   }
 } as Meta
 

@@ -1,13 +1,32 @@
-import styled, { css } from 'styled-components'
+import styled, { css, DefaultTheme } from 'styled-components'
 
-export const InputWrapper = styled.div`
-  ${({ theme }) => css`
+type ColorProps = {
+  color: 'light' | 'dark'
+}
+
+const wrapperModifiers = {
+  light: (theme: DefaultTheme) => css`
+    background: ${theme.colors.white};
+    svg {
+      color: ${theme.colors.darkBlue};
+    }
+  `,
+  dark: (theme: DefaultTheme) => css`
+    background: ${theme.colors.darkBlue};
+    color: red;
+    svg {
+      color: ${theme.colors.white};
+    }
+  `
+}
+export const InputWrapper = styled.div<ColorProps>`
+  ${({ theme, color }) => css`
     display: flex;
     align-items: center;
-    background: ${theme.colors.darkBlue};
+
     border-radius: 0.2rem;
     padding: 0 ${theme.spacings.xsmall};
-
+    ${color && wrapperModifiers[color](theme)}
     &:focus-within {
       box-shadow: 0 0 0.5rem ${theme.colors.veryDarkBlue2};
     }
@@ -16,7 +35,7 @@ export const InputWrapper = styled.div`
 
 export const Input = styled.input`
   ${({ theme }) => css`
-    color: ${theme.colors.white};
+    color: ${theme.colors.veryDarkBlue2};
     font-size: ${theme.font.sizes.medium};
     padding: ${theme.spacings.xxsmall} 0;
     padding: ${theme.spacings.xsmall};
@@ -33,14 +52,6 @@ export const Input = styled.input`
         font-size: ${theme.font.sizes.medium};
       }
     }
-  `}
-`
-
-export const Label = styled.label`
-  ${({ theme }) => css`
-    font-size: ${theme.font.sizes.small};
-    color: ${theme.colors.white};
-    cursor: pointer;
   `}
 `
 
