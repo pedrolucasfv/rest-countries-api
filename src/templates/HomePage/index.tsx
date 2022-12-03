@@ -18,8 +18,6 @@ const HomePage = ({ color, selectRegion, checkCountry }: HomePageProps) => {
   const [regionSelect, setRegionSelect] = useState('')
   const [isRegionSelected, setIsRegionSelected] = useState(false)
 
-  const [countrySelect, setCountrySelect] = useState('')
-
   const changeColor = () => {
     if (colorTheme == 'dark') setColorTheme('light')
     else setColorTheme('dark')
@@ -28,15 +26,12 @@ const HomePage = ({ color, selectRegion, checkCountry }: HomePageProps) => {
   const regionSelected = (region: string) => {
     setRegionSelect(region)
     setIsRegionSelected(true)
-    console.log(isRegionSelected)
     console.log(regionSelect)
+    console.log(isRegionSelected)
   }
 
   const countrySelected = (country: string) => {
-    setCountrySelect(country)
     checkCountry(country)
-    console.log(`clicked: ${country}`)
-    console.log(`should be ${countrySelect}`)
   }
   return (
     <S.Wrapper color={colorTheme}>

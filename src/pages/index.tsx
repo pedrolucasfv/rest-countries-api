@@ -10,18 +10,33 @@ export default function Home(props: HomePageProps) {
   const [countrySelected, setCountrySelected] =
     useState<CountryInfoProps>(countryInfoMocks)
   const [isCountrySelected, setIsCountrySelected] = useState(false)
-
+  const [countryName, setCountryName] = useState('brazil')
+  const [flag, setFlag] = useState('')
   useEffect(() => {
-    fetch('https://restcountries.com/v3.1/name/peru')
+    fetch(`https://restcountries.com/v3.1/name/${countryName}`)
       .then((resp) => resp.json())
       .then((data) => {
         setCountrySelected(data)
       })
-  }, [])
+  }, [countryName])
 
   const countrySelect = (country: string) => {
+    setCountryName(country)
     setIsCountrySelected(true)
+    setFlag(countrySelected[0].flags.svg)
     console.log(country)
+    console.log(countryName)
+    console.log(countrySelected)
+    countryInfoMocks.countryName = countrySelected[0].name.common
+    countryInfoMocks.nativeName = countrySelected[0].name.nativeName.official
+    countryInfoMocks.population = countrySelected[0].population
+    countryInfoMocks.region = countrySelected[0].region
+    countryInfoMocks.subRegion = countrySelected[0].subRegion
+    countryInfoMocks.capital = countrySelected[0].capital
+    countryInfoMocks.topLevelDomain = countrySelected[0].tld[0]
+
+    //countryInfoMocks.currencies = countrySelected[0].currencies
+    //countryInfoMocks.borderCountries = countrySelected[0].borders
   }
   const backToHome = () => {
     setIsCountrySelected(false)
@@ -31,7 +46,8 @@ export default function Home(props: HomePageProps) {
     <>
       {isCountrySelected && (
         <CountryPage
-          country={countrySelected}
+          flag={flag}
+          country={countryInfoMocks}
           color="dark"
           backToHome={backToHome}
         />
