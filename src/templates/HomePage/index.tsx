@@ -9,9 +9,10 @@ import * as S from './styles'
 export type HomePageProps = {
   selectRegion: SelectProps
   color: 'dark' | 'light'
+  checkCountry: (country: string) => void
 }
 
-const HomePage = ({ color, selectRegion }: HomePageProps) => {
+const HomePage = ({ color, selectRegion, checkCountry }: HomePageProps) => {
   const [colorTheme, setColorTheme] = useState(color)
 
   const [regionSelect, setRegionSelect] = useState('')
@@ -33,6 +34,7 @@ const HomePage = ({ color, selectRegion }: HomePageProps) => {
 
   const countrySelected = (country: string) => {
     setCountrySelect(country)
+    checkCountry(country)
     console.log(`clicked: ${country}`)
     console.log(`should be ${countrySelect}`)
   }

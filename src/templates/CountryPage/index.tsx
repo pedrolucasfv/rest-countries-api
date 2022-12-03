@@ -9,9 +9,14 @@ import * as S from './styles'
 export type CountryPageProps = {
   country: CountryInfoProps
   color: 'dark' | 'light'
+  backToHome: () => void
 }
 
-const CountryPage = ({ country, color = 'light' }: CountryPageProps) => {
+const CountryPage = ({
+  country,
+  color = 'light',
+  backToHome
+}: CountryPageProps) => {
   const [colorTheme, setColorTheme] = useState(color)
 
   const changeColor = () => {
@@ -24,7 +29,7 @@ const CountryPage = ({ country, color = 'light' }: CountryPageProps) => {
       <S.Menu>
         <Menu changeColor={changeColor} color={colorTheme} />
       </S.Menu>
-      <S.Button>
+      <S.Button onClick={() => backToHome()}>
         <Button color={colorTheme} icon={<ArrowLeft />}>
           BACK
         </Button>

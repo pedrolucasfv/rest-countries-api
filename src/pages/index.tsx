@@ -1,10 +1,46 @@
 //import CountryPage, { CountryPageProps } from 'templates/CountryPage'
 import HomePage, { HomePageProps } from '../templates/HomePage'
-//import countryInfoMocks from '../components/CountryInfo/mock'
+import countryInfoMocks from '../components/CountryInfo/mock'
 import selectRegionMocks from '../components/Select/mock'
+import CountryPage from 'templates/CountryPage'
+import { CountryInfoProps } from 'components/CountryInfo'
+import { useEffect, useState } from 'react'
 
 export default function Home(props: HomePageProps) {
-  return <HomePage {...props} color="dark" />
+  const [countrySelected, setCountrySelected] =
+    useState<CountryInfoProps>(countryInfoMocks)
+  const [isCountrySelected, setIsCountrySelected] = useState(false)
+
+  useEffect(() => {
+    fetch('https://restcountries.com/v3.1/name/peru')
+      .then((resp) => resp.json())
+      .then((data) => {
+        setCountrySelected(data)
+      })
+  }, [])
+
+  const countrySelect = (country: string) => {
+    setIsCountrySelected(true)
+    console.log(country)
+  }
+  const backToHome = () => {
+    setIsCountrySelected(false)
+  }
+
+  return (
+    <>
+      {isCountrySelected && (
+        <CountryPage
+          country={countrySelected}
+          color="dark"
+          backToHome={backToHome}
+        />
+      )}
+      {!isCountrySelected && (
+        <HomePage {...props} checkCountry={countrySelect} color="dark" />
+      )}
+    </>
+  )
 }
 
 // ATENÇÃO:
