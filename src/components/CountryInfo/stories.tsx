@@ -3,16 +3,15 @@ import CountryInfo, { CountryInfoProps } from '.'
 import items from './mock'
 export default {
   title: 'CountryInfo',
-  component: CountryInfo
+  component: CountryInfo,
+  args: {
+    ...items
+  }
 } as Meta
 
 export const Dark: Story<CountryInfoProps> = (args) => (
   <CountryInfo {...args} color="dark" />
 )
-
-Dark.args = {
-  ...items
-}
 
 Dark.parameters = {
   backgrounds: {
@@ -22,7 +21,3 @@ Dark.parameters = {
 export const Light: Story<CountryInfoProps> = (args) => (
   <CountryInfo {...args} />
 )
-
-Light.args = {
-  ...items
-}

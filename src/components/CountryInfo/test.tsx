@@ -13,7 +13,7 @@ const args = {
   topLevelDomain: '.be',
   currencies: 'Euro',
   languages: 'German',
-  borderCountries: 'france'
+  borderCountries: ['france', 'italy']
 }
 
 describe('<CountryInfo />', () => {

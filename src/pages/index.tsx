@@ -36,7 +36,7 @@ export default function Home(props: HomePageProps) {
     countryInfoMocks.topLevelDomain = countrySelected[0].tld[0]
 
     //countryInfoMocks.currencies = countrySelected[0].currencies
-    //countryInfoMocks.borderCountries = countrySelected[0].borders
+    countryInfoMocks.borderCountries = countrySelected[0].borders
   }
   const backToHome = () => {
     setIsCountrySelected(false)
