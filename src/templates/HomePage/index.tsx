@@ -15,7 +15,7 @@ export type HomePageProps = {
 const HomePage = ({ color, selectRegion, checkCountry }: HomePageProps) => {
   const [colorTheme, setColorTheme] = useState(color)
 
-  const [regionSelect, setRegionSelect] = useState('')
+  const [regionSelect, setRegionSelect] = useState('Asia')
   const [isRegionSelected, setIsRegionSelected] = useState(false)
 
   const changeColor = () => {
@@ -52,7 +52,11 @@ const HomePage = ({ color, selectRegion, checkCountry }: HomePageProps) => {
           </S.SelectRegion>
         </S.Filters>
         <S.CardGroup>
-          <CardGroup countrySelected={countrySelected} />
+          <CardGroup
+            countrySelected={countrySelected}
+            region={regionSelect}
+            filter={isRegionSelected}
+          />
         </S.CardGroup>
       </S.Content>
     </S.Wrapper>

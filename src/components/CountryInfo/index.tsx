@@ -6,7 +6,7 @@ export type CountryInfoProps = {
   nativeName: string
   population: string
   region: string
-  subRegion: string
+  subregion: string
   capital: string
   topLevelDomain: string
   currencies: string
@@ -22,7 +22,7 @@ const CountryInfo = ({
   languages,
   population,
   region,
-  subRegion,
+  subregion,
   topLevelDomain,
   nativeName,
   borderCountries,
@@ -45,7 +45,7 @@ const CountryInfo = ({
       </S.Region>
       <S.SubRegion>
         <span>Sub Region: </span>
-        {subRegion}
+        {subregion}
       </S.SubRegion>
       <S.Capital>
         <span>Capital: </span>

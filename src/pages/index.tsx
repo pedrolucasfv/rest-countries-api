@@ -4,40 +4,37 @@ import countryInfoMocks from '../components/CountryInfo/mock'
 import selectRegionMocks from '../components/Select/mock'
 import CountryPage from 'templates/CountryPage'
 import { CountryInfoProps } from 'components/CountryInfo'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 export default function Home(props: HomePageProps) {
-  const [countrySelected, setCountrySelected] =
-    useState<CountryInfoProps>(countryInfoMocks)
+  let countryPicked: CountryInfoProps = countryInfoMocks
+
   const [isCountrySelected, setIsCountrySelected] = useState(false)
-  const [countryName, setCountryName] = useState('brazil')
+  const [countryPick, setCountryPick] =
+    useState<CountryInfoProps>(countryInfoMocks)
   const [flag, setFlag] = useState('')
-  useEffect(() => {
-    fetch(`https://restcountries.com/v3.1/name/${countryName}`)
-      .then((resp) => resp.json())
-      .then((data) => {
-        setCountrySelected(data)
-      })
-  }, [countryName])
 
   const countrySelect = (country: string) => {
-    setCountryName(country)
-    setIsCountrySelected(true)
-    setFlag(countrySelected[0].flags.svg)
-    console.log(country)
-    console.log(countryName)
-    console.log(countrySelected)
-    countryInfoMocks.countryName = countrySelected[0].name.common
-    countryInfoMocks.nativeName = countrySelected[0].name.nativeName.official
-    countryInfoMocks.population = countrySelected[0].population
-    countryInfoMocks.region = countrySelected[0].region
-    countryInfoMocks.subRegion = countrySelected[0].subRegion
-    countryInfoMocks.capital = countrySelected[0].capital
-    countryInfoMocks.topLevelDomain = countrySelected[0].tld[0]
-
-    //countryInfoMocks.currencies = countrySelected[0].currencies
-    countryInfoMocks.borderCountries = countrySelected[0].borders
+    countryInfoMocks.countryName = country
+    fetch(`https://restcountries.com/v3.1/name/${country}`)
+      .then((resp) => resp.json())
+      .then((data) => {
+        countryPicked = data[0]
+        setCountryPick(countryPicked)
+        console.log(countryPick)
+        countryInfoMocks.nativeName = countryPicked.name.official
+        countryInfoMocks.capital = countryPicked.capital
+        countryInfoMocks.region = countryPicked.region
+        countryInfoMocks.population = countryPicked.population
+        countryInfoMocks.subregion = countryPicked.subregion
+        countryInfoMocks.topLevelDomain = countryPicked.tld
+        //countryInfoMocks.currencies = countryPicked.currencies
+        //countryInfoMocks.borderCountries = countryPicked.borders
+        setFlag(countryPicked.flags.svg)
+        setIsCountrySelected(true)
+      })
   }
+
   const backToHome = () => {
     setIsCountrySelected(false)
   }
