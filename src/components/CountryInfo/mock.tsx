@@ -8,5 +8,5 @@ export default {
   topLevelDomain: '.be',
   currencies: 'Euro',
   languages: 'German',
-  borderCountries: 'france'
+  borderCountries: ['france', 'canada']
 }

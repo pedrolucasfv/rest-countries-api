@@ -29,7 +29,8 @@ export default function Home(props: HomePageProps) {
         countryInfoMocks.subregion = countryPicked.subregion
         countryInfoMocks.topLevelDomain = countryPicked.tld
         //countryInfoMocks.currencies = countryPicked.currencies
-        //countryInfoMocks.borderCountries = countryPicked.borders
+        countryInfoMocks.borderCountries = countryPicked.borders
+        console.log(countryInfoMocks.borderCountries)
         setFlag(countryPicked.flags.svg)
         setIsCountrySelected(true)
       })

@@ -9,7 +9,7 @@ const args = {
   population: '81,770,900',
   capital: 'Berlin',
   region: 'Europe',
-  subRegion: 'Western Europe',
+  subregion: 'Western Europe',
   topLevelDomain: '.be',
   currencies: 'Euro',
   languages: 'German',

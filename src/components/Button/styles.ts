@@ -40,6 +40,7 @@ const wrapperModifiers = {
 export const Wrapper = styled.button<WrapperProps>`
   ${({ theme, color, hasIcon, minimal }) => css`
     padding: 1rem 4.2rem;
+
     display: flex;
     letter-spacing: 0.3rem;
     font-weight: 600;
@@ -49,6 +50,7 @@ export const Wrapper = styled.button<WrapperProps>`
     cursor: pointer;
     border-radius: 0.8rem;
     text-decoration: none;
+
     ${!!color && wrapperModifiers[color](theme)};
     ${!!hasIcon && wrapperModifiers.withIcon(theme)};
     ${!!minimal && wrapperModifiers.minimal(theme)};

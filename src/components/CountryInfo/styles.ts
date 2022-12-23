@@ -53,5 +53,21 @@ export const Currencies = styled.div``
 export const Languages = styled.div``
 export const BorderCountries = styled.div`
   display: flex;
+  align-items: center;
   margin-top: 4rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  > span {
+    margin-bottom: 2rem;
+  }
+  > div {
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+  }
+  > p {
+    margin-bottom: 2rem;
+    margin-left: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+  }
 `

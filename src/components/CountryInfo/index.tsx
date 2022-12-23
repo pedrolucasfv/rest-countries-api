@@ -11,7 +11,7 @@ export type CountryInfoProps = {
   topLevelDomain: string
   currencies: string
   languages: string
-  borderCountries: string
+  borderCountries: string[]
   color?: 'dark' | 'light'
 }
 
@@ -66,8 +66,18 @@ const CountryInfo = ({
     </S.Info>
     <S.BorderCountries>
       <span>BorderCountries: </span>
-      {color == 'light' && <Button color="light">{borderCountries}</Button>}
-      {color == 'dark' && <Button color="dark">{borderCountries}</Button>}
+      {borderCountries ? (
+        borderCountries.map((item, index) => {
+          return (
+            <div key={index}>
+              {color == 'light' && <Button color="light">{item}</Button>}
+              {color == 'dark' && <Button color="dark">{item}</Button>}
+            </div>
+          )
+        })
+      ) : (
+        <p>{'No border countries here'}</p>
+      )}
     </S.BorderCountries>
   </S.Wrapper>
 )
