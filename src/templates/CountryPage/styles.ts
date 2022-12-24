@@ -19,6 +19,7 @@ export const Wrapper = styled.main<WrapperProps>`
     ${media.lessThan('medium')`
     display: flex;
       flex-direction: column;
+  height: 150rem;
       
     `}
     ${media.greaterThan('medium')`
@@ -55,14 +56,17 @@ type FlagProps = {
 export const Image = styled.div<FlagProps>`
   ${({ src }) => css`
     ${media.lessThan('medium')`
-  margin: 3.5rem 3rem;
+    margin: 3.5rem 3rem;
   `}
-    height: 100%;
+    height: 25rem;
+    width: 30rem;
+    background-size: 30rem 30rem;
     background-image: url(${src});
     background-position: center;
-    background-size: cover;
+    ${media.greaterThan('medium')`
     grid-column: 2;
     grid-row: 3;
+  `}
   `}
 `
 

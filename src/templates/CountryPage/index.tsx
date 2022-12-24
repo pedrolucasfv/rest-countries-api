@@ -42,7 +42,9 @@ const CountryPage = ({
           BACK
         </Button>
       </S.Button>
-      <S.Image src={flag} />
+      <div>
+        <S.Image src={flag} />
+      </div>
       <S.Info>
         <CountryInfo
           {...country}
