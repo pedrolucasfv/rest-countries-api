@@ -55,21 +55,25 @@ type FlagProps = {
 }
 export const Image = styled.div<FlagProps>`
   ${({ src }) => css`
+    height: 100%;
+    width: 100%;
     ${media.lessThan('medium')`
     margin: 3.5rem 3rem;
-  `}
     height: 25rem;
     width: 30rem;
-    background-size: 30rem 30rem;
+  `}
+
+    background-size: cover;
     background-image: url(${src});
     background-position: center;
-    ${media.greaterThan('medium')`
+  `}
+`
+export const ImageContent = styled.div`
+  ${media.greaterThan('medium')`
     grid-column: 2;
     grid-row: 3;
   `}
-  `}
 `
-
 export const Button = styled.div`
   ${media.lessThan('medium')`
   padding: 3rem 0rem 0rem 3rem;
