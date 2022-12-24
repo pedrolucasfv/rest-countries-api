@@ -1,5 +1,5 @@
 export default {
-  countryName: 'Germany',
+  name: 'Germany',
   nativeName: 'Deutschland',
   population: '81,770,900',
   capital: 'Berlin',

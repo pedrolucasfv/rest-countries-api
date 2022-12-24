@@ -7,7 +7,7 @@ type StateProps = {
     common: string
   }
   population: string
-  continents: string
+  region: string
   capital: string
   flags: {
     svg: string
@@ -47,7 +47,7 @@ const CardGroup = ({
                 <CountryCard
                   countryName={resp.name.common}
                   population={resp.population}
-                  region={resp.continents}
+                  region={resp.region}
                   capital={resp.capital}
                   countryImage={resp.flags.svg}
                 />
@@ -55,7 +55,7 @@ const CardGroup = ({
             )}
             {filter && (
               <>
-                {region == resp.continents && (
+                {region == resp.region && (
                   <S.Cards
                     key={resp.name.common}
                     onClick={() => countrySelected(resp.name.common)}
@@ -63,7 +63,7 @@ const CardGroup = ({
                     <CountryCard
                       countryName={resp.name.common}
                       population={resp.population}
-                      region={resp.continents}
+                      region={resp.region}
                       capital={resp.capital}
                       countryImage={resp.flags.svg}
                     />

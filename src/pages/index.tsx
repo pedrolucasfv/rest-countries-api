@@ -6,38 +6,70 @@ import CountryPage from 'templates/CountryPage'
 import { CountryInfoProps } from 'components/CountryInfo'
 import { useState } from 'react'
 
-export default function Home(props: HomePageProps) {
-  let countryPicked: CountryInfoProps = countryInfoMocks
+type ColorProps = 'light' | 'dark'
 
+export type CountryProps = Omit<CountryInfoProps, 'color' | 'countrySelect'>
+
+export default function Home(props: HomePageProps) {
+  let countryPicked
+  const darkColor: ColorProps = 'dark'
+  const lightColor: ColorProps = 'light'
+  const [colorTheme, setColorTheme] = useState<ColorProps>(lightColor)
   const [isCountrySelected, setIsCountrySelected] = useState(false)
-  const [countryPick, setCountryPick] =
-    useState<CountryInfoProps>(countryInfoMocks)
   const [flag, setFlag] = useState('')
 
-  const countrySelect = (country: string) => {
-    countryInfoMocks.countryName = country
-    fetch(`https://restcountries.com/v3.1/name/${country}`)
-      .then((resp) => resp.json())
-      .then((data) => {
-        countryPicked = data[0]
-        setCountryPick(countryPicked)
-        console.log(countryPick)
-        countryInfoMocks.nativeName = countryPicked.name.official
-        countryInfoMocks.capital = countryPicked.capital
-        countryInfoMocks.region = countryPicked.region
-        countryInfoMocks.population = countryPicked.population
-        countryInfoMocks.subregion = countryPicked.subregion
-        countryInfoMocks.topLevelDomain = countryPicked.tld
-        //countryInfoMocks.currencies = countryPicked.currencies
-        countryInfoMocks.borderCountries = countryPicked.borders
-        console.log(countryInfoMocks.borderCountries)
-        setFlag(countryPicked.flags.svg)
-        setIsCountrySelected(true)
-      })
+  const countrySelect = (country: string, alpha: boolean) => {
+    if (alpha) {
+      fetch(`https://restcountries.com/v3.1/alpha/${country}`)
+        .then((resp) => resp.json())
+        .then((data) => {
+          countryPicked = data[0]
+          console.log(countryPicked)
+          countryInfoMocks.name = countryPicked.name.common
+          countryInfoMocks.nativeName = countryPicked.name.official
+          countryInfoMocks.capital = countryPicked.capital
+          countryInfoMocks.region = countryPicked.region
+          countryInfoMocks.population = countryPicked.population
+          countryInfoMocks.subregion = countryPicked.subregion
+          countryInfoMocks.topLevelDomain = countryPicked.tld
+          //countryInfoMocks.currencies = countryPicked.currencies
+          //countryInfoMocks.languages = countryPicked.languages
+          countryInfoMocks.borderCountries = countryPicked.borders
+          console.log(countryInfoMocks.borderCountries)
+          setFlag(countryPicked.flags.svg)
+          setIsCountrySelected(true)
+          console.log(countryPicked)
+        })
+    } else {
+      fetch(`https://restcountries.com/v3.1/name/${country}`)
+        .then((resp) => resp.json())
+        .then((data) => {
+          countryPicked = data[0]
+          console.log(countryPicked)
+          countryInfoMocks.name = countryPicked.name.common
+          countryInfoMocks.nativeName = countryPicked.name.official
+          countryInfoMocks.capital = countryPicked.capital
+          countryInfoMocks.region = countryPicked.region
+          countryInfoMocks.population = countryPicked.population
+          countryInfoMocks.subregion = countryPicked.subregion
+          countryInfoMocks.topLevelDomain = countryPicked.tld
+          //countryInfoMocks.currencies = countryPicked.currencies
+          //countryInfoMocks.languages = countryPicked.languages
+          countryInfoMocks.borderCountries = countryPicked.borders
+          console.log(countryInfoMocks.borderCountries)
+          setFlag(countryPicked.flags.svg)
+          setIsCountrySelected(true)
+        })
+    }
   }
 
   const backToHome = () => {
     setIsCountrySelected(false)
+  }
+
+  const changeColor = () => {
+    if (colorTheme == darkColor) setColorTheme(lightColor)
+    else setColorTheme(darkColor)
   }
 
   return (
@@ -46,12 +78,14 @@ export default function Home(props: HomePageProps) {
         <CountryPage
           flag={flag}
           country={countryInfoMocks}
-          color="dark"
+          color={colorTheme}
           backToHome={backToHome}
+          countrySelect={countrySelect}
+          switchColor={changeColor}
         />
       )}
       {!isCountrySelected && (
-        <HomePage {...props} checkCountry={countrySelect} color="dark" />
+        <HomePage {...props} checkCountry={countrySelect} color={colorTheme} />
       )}
     </>
   )

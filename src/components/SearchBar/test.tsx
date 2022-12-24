@@ -5,7 +5,7 @@ import SearchBar from '.'
 
 describe('<SearchBar />', () => {
   it('Renders without Label', () => {
-    renderWithTheme(<SearchBar />)
+    renderWithTheme(<SearchBar color="light" />)
 
     expect(screen.queryByLabelText('Label')).not.toBeInTheDocument()
   })

@@ -6,7 +6,7 @@ type ColorProps = {
 
 const wrapperModifiers = {
   light: (theme: DefaultTheme) => css`
-    background: ${theme.colors.white};
+    background: ${theme.colors.lightBg};
   `,
   dark: (theme: DefaultTheme) => css`
     background: ${theme.colors.veryDarkBlue2};

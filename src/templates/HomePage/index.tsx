@@ -9,7 +9,7 @@ import * as S from './styles'
 export type HomePageProps = {
   selectRegion: SelectProps
   color: 'dark' | 'light'
-  checkCountry: (country: string) => void
+  checkCountry: (country: string, alpha: boolean) => void
 }
 
 const HomePage = ({ color, selectRegion, checkCountry }: HomePageProps) => {
@@ -31,7 +31,7 @@ const HomePage = ({ color, selectRegion, checkCountry }: HomePageProps) => {
   }
 
   const countrySelected = (country: string) => {
-    checkCountry(country)
+    checkCountry(country, false)
   }
   return (
     <S.Wrapper color={colorTheme}>

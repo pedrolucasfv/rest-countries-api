@@ -2,7 +2,7 @@ import Button from 'components/Button'
 import * as S from './styles'
 
 export type CountryInfoProps = {
-  countryName: string
+  name: string
   nativeName: string
   population: string
   region: string
@@ -13,11 +13,12 @@ export type CountryInfoProps = {
   languages: string
   borderCountries: string[]
   color?: 'dark' | 'light'
+  countrySelect: (country: string, alpha: boolean) => void
 }
 
 const CountryInfo = ({
   capital,
-  countryName,
+  name,
   currencies,
   languages,
   population,
@@ -26,10 +27,11 @@ const CountryInfo = ({
   topLevelDomain,
   nativeName,
   borderCountries,
-  color = 'light'
+  color = 'light',
+  countrySelect
 }: CountryInfoProps) => (
   <S.Wrapper color={color}>
-    <S.CountryName>{countryName}</S.CountryName>
+    <S.CountryName>{name}</S.CountryName>
     <S.Info>
       <S.NativeName>
         <span>Native Name: </span>
@@ -69,7 +71,7 @@ const CountryInfo = ({
       {borderCountries ? (
         borderCountries.map((item, index) => {
           return (
-            <div key={index}>
+            <div key={index} onClick={() => countrySelect(item, true)}>
               {color == 'light' && <Button color="light">{item}</Button>}
               {color == 'dark' && <Button color="dark">{item}</Button>}
             </div>

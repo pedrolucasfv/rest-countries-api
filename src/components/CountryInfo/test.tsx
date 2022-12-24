@@ -2,18 +2,22 @@ import { screen } from '@testing-library/react'
 import { renderWithTheme } from 'utils/tests/helpers'
 
 import CountryInfo from '.'
-
+const color: 'dark' | 'light' = 'light'
 const args = {
-  countryName: 'Germany',
+  name: 'Germany',
   nativeName: 'Deutschland',
   population: '81,770,900',
-  capital: 'Berlin',
   region: 'Europe',
   subregion: 'Western Europe',
-  topLevelDomain: '.be',
+  capital: 'Berlin',
   currencies: 'Euro',
+  topLevelDomain: '.be',
   languages: 'German',
-  borderCountries: ['france', 'italy']
+  borderCountries: ['france', 'italy'],
+  color: color,
+  countrySelect: () => {
+    console.log('teste')
+  }
 }
 
 describe('<CountryInfo />', () => {

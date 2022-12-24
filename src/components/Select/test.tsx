@@ -5,7 +5,10 @@ import Select from '.'
 
 const args = {
   title: 'Filter By Region',
-  items: ['Africa', 'America', 'Asia']
+  items: ['Africa', 'America', 'Asia'],
+  regionSelected: () => {
+    console.log('kk')
+  }
 }
 
 describe('<Select />', () => {

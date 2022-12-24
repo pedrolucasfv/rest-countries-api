@@ -1,4 +1,4 @@
 export default {
   title: 'Filter By Region',
-  items: ['Africa', 'America', 'Asia', 'Europe', 'Oceania']
+  items: ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
 }

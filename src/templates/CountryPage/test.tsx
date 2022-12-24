@@ -4,7 +4,17 @@ import CountryPage from '.'
 import { renderWithTheme } from 'utils/tests/helpers'
 
 const props = {
-  country: countryInfoMocks
+  country: countryInfoMocks,
+  flag: 'bandeira',
+  backToHome: () => {
+    console.log('kk')
+  },
+  countrySelect: () => {
+    console.log('kk')
+  },
+  switchColor: () => {
+    console.log('kk')
+  }
 }
 
 describe('<CountryPage />', () => {

@@ -27,7 +27,8 @@ export default {
     veryDarkBlue2: 'hsl(200, 15%, 8%)',
     darkGray: 'hsl(0, 0%, 52%)',
     veryLightGray: 'hsl(0, 0%, 98%)',
-    white: 'hsl(0, 0%, 100%)'
+    white: 'hsl(0, 0%, 100%)',
+    lightBg: '#DFDFDF'
   },
   spacings: {
     xxsmall: '0.8rem',
