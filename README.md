@@ -6,6 +6,24 @@ This project use a boilerplate of a course called [React Avançado](https://reac
 ![ci](https://github.com/React-Avancado/boilerplate/workflows/ci/badge.svg)
 
 
+
+
+## Screenshots
+
+![gif](https://github.com/pedrolucasfv/rest-countries-api/blob/main/public/screenshots/gif-rest-countries-api.gif)
+
+### Desktop:
+
+<p align="center">
+    <img width= "702px" height="362px" src="/public/screenshots/dark-desktop.png">
+</p>
+
+### Mobile:
+
+<p align="center">
+    <img width= "215px" height="408px" src="/public/screenshots/dark-mobile.png">
+</p>
+
 ### Notion
 I have decided to create a "notion" for each project I do, in order to have a record and details of projects.
 
