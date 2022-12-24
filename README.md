@@ -10,18 +10,19 @@ This project use a boilerplate of a course called [React Avançado](https://reac
 
 ## Screenshots
 
-![gif](https://github.com/pedrolucasfv/rest-countries-api/blob/main/public/screenshots/gif-rest-countries-api.gif)
+
+![gif](https://github.com/pedrolucasfv/rest-countries-api/blob/main/public/img/screenshots/gif-rest-countries-api.gif)
 
 ### Desktop:
 
 <p align="center">
-    <img width= "702px" height="362px" src="/public/screenshots/dark-desktop.png">
+    <img width= "702px" height="362px" src="/public/img/screenshots/dark-desktop.png">
 </p>
 
 ### Mobile:
 
 <p align="center">
-    <img width= "215px" height="408px" src="/public/screenshots/dark-mobile.png">
+    <img width= "215px" height="408px" src="/public/img/screenshots/dark-mobile.png">
 </p>
 
 ### Notion
