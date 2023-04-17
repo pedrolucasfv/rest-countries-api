@@ -6,7 +6,7 @@ const countriesApi = {
       () => null
     ),
   paths: () => Api.get('/all?fields=cca3').catch(() => null),
-  country: (code: string) =>
+  country: (code: string | string[] | undefined) =>
     Api.get(
       `/alpha/${code}?fields=name,capital,population,region,flags,tld,currencies,languages,borders`
     ).catch(() => null)
