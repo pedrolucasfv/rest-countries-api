@@ -1,4 +1,5 @@
 import Button from 'components/Button'
+import Link from 'next/link'
 import * as S from './styles'
 
 export type CountryInfoProps = {
@@ -10,10 +11,9 @@ export type CountryInfoProps = {
   capital: string
   topLevelDomain: string
   currencies: string
-  languages: string
+  languages: string[]
   borderCountries: string[]
   color?: 'dark' | 'light'
-  countrySelect: (country: string, alpha: boolean) => void
 }
 
 const CountryInfo = ({
@@ -27,8 +27,7 @@ const CountryInfo = ({
   topLevelDomain,
   nativeName,
   borderCountries,
-  color = 'light',
-  countrySelect
+  color = 'light'
 }: CountryInfoProps) => (
   <S.Wrapper color={color}>
     <S.CountryName>{name}</S.CountryName>
@@ -63,7 +62,9 @@ const CountryInfo = ({
       </S.Currencies>
       <S.Languages>
         <span>Languages: </span>
-        {languages}
+        {languages.map((language, index) => (
+          <text key={index}>{language} </text>
+        ))}
       </S.Languages>
     </S.Info>
     <S.BorderCountries>
@@ -71,14 +72,16 @@ const CountryInfo = ({
       {borderCountries ? (
         borderCountries.map((item, index) => {
           return (
-            <div key={index} onClick={() => countrySelect(item, true)}>
-              {color == 'light' && <Button color="light">{item}</Button>}
-              {color == 'dark' && <Button color="dark">{item}</Button>}
-            </div>
+            <Link href={`/country/${item}`} passHref key={index}>
+              <a>
+                {color == 'light' && <Button color="light">{item}</Button>}
+                {color == 'dark' && <Button color="dark">{item}</Button>}
+              </a>
+            </Link>
           )
         })
       ) : (
-        <p>{'No border countries here'}</p>
+        <p>No border countries here</p>
       )}
     </S.BorderCountries>
   </S.Wrapper>

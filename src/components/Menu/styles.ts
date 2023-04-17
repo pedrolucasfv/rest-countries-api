@@ -27,8 +27,11 @@ export const Wrapper = styled.main<WrapperProps>`
   `}
 `
 
-export const Logo = styled.h2`
+export const Logo = styled.a`
   font-size: 2.2rem;
+  font-weight: 650;
+  text-decoration: none;
+  cursor: pointer;
 `
 
 export const Button = styled.div``

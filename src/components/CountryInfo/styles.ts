@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-import { DefaultTheme, css } from 'styled-components'
+import styled, { DefaultTheme, css } from 'styled-components'
 import media from 'styled-media-query'
 
 type WrapperProps = {
@@ -60,9 +59,10 @@ export const BorderCountries = styled.div`
   > span {
     margin-bottom: 2rem;
   }
-  > div {
+  > a {
     margin-left: 2rem;
     margin-bottom: 2rem;
+    text-decoration: none;
   }
   > p {
     margin-bottom: 2rem;

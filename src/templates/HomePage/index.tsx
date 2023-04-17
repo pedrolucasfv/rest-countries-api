@@ -1,4 +1,5 @@
 //import { CountryCardProps } from 'components/CountryCard'
+import { CountryCardProps } from 'components/CountryCard'
 import Menu from 'components/Menu'
 import SearchBar from 'components/SearchBar'
 import Select, { SelectProps } from 'components/Select'
@@ -8,11 +9,11 @@ import * as S from './styles'
 
 export type HomePageProps = {
   selectRegion: SelectProps
+  countries: CountryCardProps[]
   color: 'dark' | 'light'
-  checkCountry: (country: string, alpha: boolean) => void
 }
 
-const HomePage = ({ color, selectRegion, checkCountry }: HomePageProps) => {
+const HomePage = ({ color, selectRegion, countries }: HomePageProps) => {
   const [colorTheme, setColorTheme] = useState(color)
 
   const [regionSelect, setRegionSelect] = useState('Asia')
@@ -26,13 +27,8 @@ const HomePage = ({ color, selectRegion, checkCountry }: HomePageProps) => {
   const regionSelected = (region: string) => {
     setRegionSelect(region)
     setIsRegionSelected(true)
-    console.log(regionSelect)
-    console.log(isRegionSelected)
   }
 
-  const countrySelected = (country: string) => {
-    checkCountry(country, false)
-  }
   return (
     <S.Wrapper color={colorTheme}>
       <S.Menu>
@@ -53,7 +49,7 @@ const HomePage = ({ color, selectRegion, checkCountry }: HomePageProps) => {
         </S.Filters>
         <S.CardGroup>
           <CardGroup
-            countrySelected={countrySelected}
+            countries={countries}
             region={regionSelect}
             filter={isRegionSelected}
           />

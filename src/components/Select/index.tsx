@@ -1,6 +1,6 @@
-import * as S from './styles'
 import { ArrowDownS } from '@styled-icons/remix-line/ArrowDownS'
 import { useState } from 'react'
+import * as S from './styles'
 
 export type SelectProps = {
   title: string
@@ -30,8 +30,7 @@ const Select = ({
         >
           {items.map((item, index) => (
             <S.Title key={index} onClick={() => regionSelected(item)}>
-              {' '}
-              {item}{' '}
+              {item}
             </S.Title>
           ))}
         </S.Items>

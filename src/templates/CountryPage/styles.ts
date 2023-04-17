@@ -25,7 +25,7 @@ export const Wrapper = styled.main<WrapperProps>`
     ${media.greaterThan('medium')`
     display: grid;
     grid-template-rows: 10% 24% 47% 19%;
-    grid-template-columns: 10% 34% 12% 34% 10%;
+    grid-template-columns: 5% 34% 12% 44% 5%;
     `}
     ${media.greaterThan('huge')`
     grid-template-rows: 7% 21% 44% 28%;

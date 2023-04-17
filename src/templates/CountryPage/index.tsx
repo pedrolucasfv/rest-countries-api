@@ -4,32 +4,21 @@ import { useState } from 'react'
 import Button from 'components/Button'
 import CountryInfo from 'components/CountryInfo'
 import Menu from 'components/Menu'
-import * as S from './styles'
 import { CountryProps } from 'pages'
+import * as S from './styles'
 
 export type CountryPageProps = {
   country: CountryProps
-  color: 'dark' | 'light'
+  color?: 'dark' | 'light'
   flag: string
-  backToHome: () => void
-  countrySelect: (country: string, alpha: boolean) => void
-  switchColor: () => void
 }
 
-const CountryPage = ({
-  country,
-  color = 'light',
-  flag,
-  backToHome,
-  countrySelect,
-  switchColor
-}: CountryPageProps) => {
+const CountryPage = ({ country, color = 'light', flag }: CountryPageProps) => {
   const [colorTheme, setColorTheme] = useState(color)
 
   const changeColor = () => {
     if (colorTheme == 'dark') setColorTheme('light')
     else setColorTheme('dark')
-    switchColor()
   }
 
   return (
@@ -37,20 +26,18 @@ const CountryPage = ({
       <S.Menu>
         <Menu changeColor={changeColor} color={colorTheme} />
       </S.Menu>
-      <S.Button onClick={() => backToHome()}>
-        <Button color={colorTheme} icon={<ArrowLeft />}>
-          BACK
-        </Button>
+      <S.Button>
+        <div onClick={() => window.history.back()}>
+          <Button color={colorTheme} icon={<ArrowLeft />}>
+            BACK
+          </Button>
+        </div>
       </S.Button>
       <S.ImageContent>
         <S.Image src={flag} />
       </S.ImageContent>
       <S.Info>
-        <CountryInfo
-          {...country}
-          color={colorTheme}
-          countrySelect={countrySelect}
-        />
+        <CountryInfo {...country} color={colorTheme} />
       </S.Info>
     </S.Wrapper>
   )

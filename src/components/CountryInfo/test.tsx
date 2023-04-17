@@ -12,7 +12,7 @@ const args = {
   capital: 'Berlin',
   currencies: 'Euro',
   topLevelDomain: '.be',
-  languages: 'German',
+  languages: ['German'],
   borderCountries: ['france', 'italy'],
   color: color,
   countrySelect: () => {

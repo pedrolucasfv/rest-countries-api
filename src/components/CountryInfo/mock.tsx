@@ -7,6 +7,6 @@ export default {
   subregion: 'Western Europe',
   topLevelDomain: '.be',
   currencies: 'Euro',
-  languages: 'German',
+  languages: ['German'],
   borderCountries: ['france', 'canada']
 }

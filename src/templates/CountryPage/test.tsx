@@ -1,29 +1,16 @@
 import { screen } from '@testing-library/react'
-import countryInfoMocks from '../../components/CountryInfo/mock'
-import CountryPage from '.'
 import { renderWithTheme } from 'utils/tests/helpers'
+import CountryPage from '.'
+import countryInfoMocks from '../../components/CountryInfo/mock'
 
 const props = {
   country: countryInfoMocks,
-  flag: 'bandeira',
-  backToHome: () => {
-    console.log('kk')
-  },
-  countrySelect: () => {
-    console.log('kk')
-  },
-  switchColor: () => {
-    console.log('kk')
-  }
+  flag: 'bandeira'
 }
 
 describe('<CountryPage />', () => {
   it('should render the heading', () => {
     renderWithTheme(<CountryPage {...props} color="light" />)
-    //teste menu
-    expect(
-      screen.getByRole('heading', { name: /where in the world/i })
-    ).toBeInTheDocument()
     //teste countryinfo
     expect(
       screen.getByRole('heading', { name: /Germany/i })

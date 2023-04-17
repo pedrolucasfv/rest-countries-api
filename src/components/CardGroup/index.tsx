@@ -1,72 +1,28 @@
-import CountryCard from '../CountryCard'
-import React, { useEffect, useState } from 'react'
+import CountryCard, { CountryCardProps } from '../CountryCard'
 import * as S from './styles'
 
-type StateProps = {
-  name: {
-    common: string
-  }
-  population: string
-  region: string
-  capital: string
-  flags: {
-    svg: string
-  }
-}
-
 export type CardGroupProps = {
-  countrySelected: (country: string) => void
+  countries: CountryCardProps[]
   region?: string
   filter?: boolean
 }
 
-const CardGroup = ({
-  countrySelected,
-  region,
-  filter = false
-}: CardGroupProps) => {
-  const [countries, setCountries] = useState<StateProps[]>([])
-  useEffect(() => {
-    fetch('https://restcountries.com/v3.1/all')
-      .then((resp) => resp.json())
-      .then((data) => {
-        setCountries(data)
-      })
-  }, [])
-
+const CardGroup = ({ region, filter = false, countries }: CardGroupProps) => {
   return (
     <S.Wrapper>
-      {countries.map((resp) => {
+      {countries.map((resp, index) => {
         return (
           <>
             {!filter && (
-              <S.Cards
-                key={resp.name.common}
-                onClick={() => countrySelected(resp.name.common)}
-              >
-                <CountryCard
-                  countryName={resp.name.common}
-                  population={resp.population}
-                  region={resp.region}
-                  capital={resp.capital}
-                  countryImage={resp.flags.svg}
-                />
+              <S.Cards key={index}>
+                <CountryCard {...resp} />
               </S.Cards>
             )}
             {filter && (
               <>
                 {region == resp.region && (
-                  <S.Cards
-                    key={resp.name.common}
-                    onClick={() => countrySelected(resp.name.common)}
-                  >
-                    <CountryCard
-                      countryName={resp.name.common}
-                      population={resp.population}
-                      region={resp.region}
-                      capital={resp.capital}
-                      countryImage={resp.flags.svg}
-                    />
+                  <S.Cards key={index}>
+                    <CountryCard {...resp} />
                   </S.Cards>
                 )}
               </>

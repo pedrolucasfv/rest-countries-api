@@ -14,24 +14,18 @@ const wrapperModifiers = {
     color: ${theme.colors.white};
   `
 }
-export const Wrapper = styled.main<WrapperProps>`
+export const Wrapper = styled.a<WrapperProps>`
   ${({ color }) => css`
     display: flex;
     flex-direction: column;
     ${color && wrapperModifiers[color](theme)};
+    text-decoration: none;
   `}
 `
 
-type ImageProps = {
-  src: string
-}
-export const CountryImage = styled.div<ImageProps>`
-  ${({ src }) => css`
-    height: 20rem;
-    background-image: url(${src});
-    background-position: center;
-    background-size: cover;
-  `}
+export const CountryImage = styled.div`
+  height: 20rem;
+  position: relative;
 `
 export const Info = styled.div`
   padding: 2rem;

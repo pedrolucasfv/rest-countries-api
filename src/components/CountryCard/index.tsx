@@ -1,3 +1,5 @@
+import Image from 'next/image'
+import Link from 'next/link'
 import * as S from './styles'
 
 export type CountryCardProps = {
@@ -7,6 +9,7 @@ export type CountryCardProps = {
   capital: string
   countryImage: string
   color?: 'light' | 'dark'
+  slug: string
 }
 
 const CountryCard = ({
@@ -15,23 +18,33 @@ const CountryCard = ({
   region,
   capital,
   countryImage,
-  color = 'light'
+  color = 'light',
+  slug
 }: CountryCardProps) => (
-  <S.Wrapper color={color}>
-    <S.CountryImage src={countryImage} />
-    <S.Info>
-      <S.CountryName>{countryName}</S.CountryName>
-      <S.Population>
-        <span>Population:</span> {population}
-      </S.Population>
-      <S.Population>
-        <span>Region:</span> {region}
-      </S.Population>
-      <S.Capital>
-        <span>Capital:</span> {capital}
-      </S.Capital>
-    </S.Info>
-  </S.Wrapper>
+  <Link href={`/country/${slug}`} passHref>
+    <S.Wrapper color={color}>
+      <S.CountryImage>
+        <Image
+          src={countryImage}
+          alt="ahsdui"
+          layout="fill"
+          objectFit="cover"
+        />
+      </S.CountryImage>
+      <S.Info>
+        <S.CountryName>{countryName}</S.CountryName>
+        <S.Population>
+          <span>Population:</span> {population}
+        </S.Population>
+        <S.Population>
+          <span>Region:</span> {region}
+        </S.Population>
+        <S.Capital>
+          <span>Capital:</span> {capital}
+        </S.Capital>
+      </S.Info>
+    </S.Wrapper>
+  </Link>
 )
 
 export default CountryCard

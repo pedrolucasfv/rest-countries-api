@@ -13,7 +13,7 @@ describe('<Menu />', () => {
     renderWithTheme(<Menu {...args} />)
 
     expect(
-      screen.getByRole('heading', { name: /where in the world/i })
+      screen.getByRole('button', { name: /where in the world/i })
     ).toBeInTheDocument()
   })
   it('should render light mode by default', () => {

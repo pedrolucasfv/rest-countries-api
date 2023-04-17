@@ -13,3 +13,9 @@ module.exports = withPWA({
     disable: !isProd
   }
 })
+
+module.exports = {
+  images: {
+    domains: ['flagcdn.com', 'upload.wikimedia.org']
+  }
+}

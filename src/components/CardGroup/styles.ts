@@ -10,4 +10,5 @@ export const Cards = styled.div`
   width: 30rem;
   margin-bottom: 7rem;
   cursor: pointer;
+  text-decoration: none;
 `
