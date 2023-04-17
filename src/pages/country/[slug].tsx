@@ -3,7 +3,7 @@ import countriesApi from 'services/countriesApi'
 import CountryPage, { CountryPageProps } from 'templates/CountryPage'
 
 export default function Index(props: CountryPageProps) {
-  return <CountryPage {...props} />
+  return <CountryPage {...props} color="light" />
 }
 type cca3Props = {
   cca3: string

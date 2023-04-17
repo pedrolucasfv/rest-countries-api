@@ -9,7 +9,7 @@ import * as S from './styles'
 
 export type CountryPageProps = {
   country: CountryProps
-  color?: 'dark' | 'light'
+  color: 'dark' | 'light'
   flag: string
 }
 
