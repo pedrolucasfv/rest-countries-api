@@ -4,6 +4,7 @@ import Menu from 'components/Menu'
 import SearchBar from 'components/SearchBar'
 import Select, { SelectProps } from 'components/Select'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-scroll'
 import CardGroup from '../../components/CardGroup'
 import * as S from './styles'
 
@@ -30,7 +31,7 @@ const HomePage = ({ color, selectRegion, countries }: HomePageProps) => {
       } else setIsOpenButton(false)
     })
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    intersectionObserver.observe(document.querySelector('#sentinel')!)
+    intersectionObserver.observe(document.querySelector('#select')!)
     return () => intersectionObserver.disconnect()
   }, [])
 
@@ -58,7 +59,7 @@ const HomePage = ({ color, selectRegion, countries }: HomePageProps) => {
 
   return (
     <S.Wrapper color={colorTheme}>
-      <S.Menu>
+      <S.Menu id="menu">
         <Menu changeColor={changeColor} color={colorTheme} />
       </S.Menu>
       <S.Content>
@@ -70,7 +71,7 @@ const HomePage = ({ color, selectRegion, countries }: HomePageProps) => {
               onInputChange={searchName}
             />
           </S.SearchBar>
-          <S.SelectRegion id="sentinel">
+          <S.SelectRegion id="select">
             <Select
               {...selectRegion}
               color={colorTheme}
@@ -84,9 +85,11 @@ const HomePage = ({ color, selectRegion, countries }: HomePageProps) => {
           />
         </S.CardGroup>
       </S.Content>
-      <S.Button color={colorTheme} isOpen={isOpenButton}>
-        Voltar ao início
-      </S.Button>
+      <Link to="menu" spy={true} smooth={true} offset={0} duration={500}>
+        <S.Button color={colorTheme} isOpen={isOpenButton}>
+          Voltar ao início
+        </S.Button>
+      </Link>
     </S.Wrapper>
   )
 }

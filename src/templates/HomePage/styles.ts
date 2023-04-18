@@ -47,7 +47,7 @@ export const Filters = styled.div`
   `}
   margin: 3rem 0;
 `
-export const Button = styled.div<isOpenProps>`
+export const Button = styled.a<isOpenProps>`
   ${({ theme, color, isOpen }) => css`
     position: fixed;
     right: 2%;
