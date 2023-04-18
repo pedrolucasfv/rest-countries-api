@@ -5,6 +5,9 @@ type ColorProps = {
   color: 'light' | 'dark'
 }
 
+type isOpenProps = {
+  isOpen: boolean
+}
 const wrapperModifiers = {
   light: (theme: DefaultTheme) => css`
     background: ${theme.colors.lightBg};
@@ -44,12 +47,15 @@ export const Filters = styled.div`
   `}
   margin: 3rem 0;
 `
-export const Button = styled.div`
-  ${({ theme, color }) => css`
+export const Button = styled.div<isOpenProps>`
+  ${({ theme, color, isOpen }) => css`
     position: fixed;
     right: 2%;
     bottom: 5%;
     border-radius: 2rem;
+    transition: transform 1s;
+    transform: ${isOpen ? 'translateX(0)' : 'translateX(30rem)'};
+
     ${color == 'dark' &&
     css`
       border: 0.5rem solid ${theme.colors.darkBlue};

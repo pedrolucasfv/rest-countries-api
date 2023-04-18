@@ -3,7 +3,7 @@ import { CountryCardProps } from 'components/CountryCard'
 import Menu from 'components/Menu'
 import SearchBar from 'components/SearchBar'
 import Select, { SelectProps } from 'components/Select'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import CardGroup from '../../components/CardGroup'
 import * as S from './styles'
 
@@ -17,6 +17,22 @@ const HomePage = ({ color, selectRegion, countries }: HomePageProps) => {
   const [colorTheme, setColorTheme] = useState(color)
   const [countriesFiltered, setCountriesFiltered] =
     useState<CountryCardProps[]>()
+
+  const [isOpenButton, setIsOpenButton] = useState(false)
+
+  useEffect(() => {
+    const intersectionObserver = new IntersectionObserver((entries) => {
+      if (
+        !entries.some((entry) => entry.isIntersecting) &&
+        entries.some((entry) => entry.boundingClientRect.y < 0)
+      ) {
+        setIsOpenButton(true)
+      } else setIsOpenButton(false)
+    })
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    intersectionObserver.observe(document.querySelector('#sentinel')!)
+    return () => intersectionObserver.disconnect()
+  }, [])
 
   const changeColor = () => {
     if (colorTheme == 'dark') setColorTheme('light')
@@ -54,7 +70,7 @@ const HomePage = ({ color, selectRegion, countries }: HomePageProps) => {
               onInputChange={searchName}
             />
           </S.SearchBar>
-          <S.SelectRegion>
+          <S.SelectRegion id="sentinel">
             <Select
               {...selectRegion}
               color={colorTheme}
@@ -68,7 +84,9 @@ const HomePage = ({ color, selectRegion, countries }: HomePageProps) => {
           />
         </S.CardGroup>
       </S.Content>
-      <S.Button color={colorTheme}>Voltar ao início</S.Button>
+      <S.Button color={colorTheme} isOpen={isOpenButton}>
+        Voltar ao início
+      </S.Button>
     </S.Wrapper>
   )
 }
