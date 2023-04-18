@@ -23,7 +23,9 @@ export const Menu = styled.div``
 
 export const SelectRegion = styled.div``
 
-export const SearchBar = styled.div``
+export const SearchBar = styled.div`
+  margin-bottom: 2rem;
+`
 
 export const CardGroup = styled.div`
   display: flex;

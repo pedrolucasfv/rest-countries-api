@@ -1,4 +1,5 @@
 import styled, { css, DefaultTheme } from 'styled-components'
+import media from 'styled-media-query'
 
 type ColorProps = {
   color: 'light' | 'dark'
@@ -20,9 +21,16 @@ export const Wrapper = styled.main`
   font-weight: 600;
   cursor: pointer;
   display: flex;
+  ${media.lessThan('medium')`
+    flex-direction: column-reverse;
+  `}
 `
 
-export const Title = styled.div``
+export const Title = styled.div`
+  ${media.lessThan('medium')`
+      flex: 1;
+    `}
+`
 
 export const SelectBox = styled.div<ColorProps & ItemsProps>`
   ${({ color, theme, isOpen }) => css`
@@ -40,6 +48,9 @@ export const SelectBox = styled.div<ColorProps & ItemsProps>`
       height: 3rem;
       transition: rotate 1s;
       rotate: ${isOpen ? '0deg' : '180deg'};
+      ${media.lessThan('medium')`
+      rotate: ${isOpen ? '90deg' : '270deg'};
+     `}
     }
   `}
 `
@@ -50,12 +61,21 @@ type ItemsProps = {
 
 export const Items = styled.div<ItemsProps>`
   ${({ isOpen, theme }) => css`
-    border: 0.1rem solid ${theme.colors.white};
     display: flex;
     align-items: center;
     overflow: hidden;
+    ${media.greaterThan('medium')`
     transition: width 1s;
     width: ${isOpen ? '0rem' : '65rem'};
+    border: 0.1rem solid ${theme.colors.white};
+    `}
+    ${media.lessThan('medium')`
+    transition: height 1s;
+    height: ${isOpen ? '0rem' : '42rem'};
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 1rem;
+    `}
   `}
 `
 export const Clear = styled.div<ColorProps>`
@@ -68,7 +88,13 @@ export const Clear = styled.div<ColorProps>`
     css`
       color: ${theme.colors.darkBlue};
     `}
+    ${media.greaterThan('medium')`
     margin-left: 3rem;
+    `}
+    ${media.lessThan('medium')`
+    padding: 2rem 1rem;
+    
+    `}
   `}
 `
 
@@ -77,5 +103,11 @@ export const Item = styled.div<ColorProps>`
     ${wrapperModifiers[color](theme)};
     padding: 0.5rem 1.5rem;
     margin-inline: 0.5rem;
+    ${media.lessThan('medium')`
+    width: 100%;
+      padding: 2rem 1rem;
+      display: flex;
+      justify-content: center;
+    `}
   `}
 `
