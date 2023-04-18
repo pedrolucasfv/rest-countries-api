@@ -26,13 +26,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       country: country && {
         name: country.data.name.common,
-        nativeName: country.data.name.nativeName[nativeName].common,
+        nativeName: country.data.name.nativeName[nativeName]
+          ? country.data.name.nativeName[nativeName].common
+          : null,
         population: `${country.data.population}`,
         region: country.data.region,
         subregion: country.data.region,
-        capital: country.data.capital,
+        capital: country.data.capital[0] ? country.data.capital : 'No data',
         topLevelDomain: country.data.tld,
-        currencies: country?.data.currencies[currency].name,
+        currencies: country.data.currencies[currency]
+          ? country.data.currencies[currency].name
+          : 'No data',
         languages: languages.map(
           (language) => country.data.languages[language]
         ),
