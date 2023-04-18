@@ -15,7 +15,8 @@ export type HomePageProps = {
 
 const HomePage = ({ color, selectRegion, countries }: HomePageProps) => {
   const [colorTheme, setColorTheme] = useState(color)
-
+  const [countriesFiltered, setCountriesFiltered] =
+    useState<CountryCardProps[]>()
   const [regionSelect, setRegionSelect] = useState('Asia')
   const [isRegionSelected, setIsRegionSelected] = useState(false)
 
@@ -29,6 +30,12 @@ const HomePage = ({ color, selectRegion, countries }: HomePageProps) => {
     setIsRegionSelected(true)
   }
 
+  const searchName = (value: string) => {
+    const filter = countries.filter((country) =>
+      country.countryName.toLowerCase().includes(value.toLowerCase())
+    )
+    setCountriesFiltered(filter)
+  }
   return (
     <S.Wrapper color={colorTheme}>
       <S.Menu>
@@ -37,7 +44,11 @@ const HomePage = ({ color, selectRegion, countries }: HomePageProps) => {
       <S.Content>
         <S.Filters>
           <S.SearchBar>
-            <SearchBar initialValue="Search for countries" color={colorTheme} />
+            <SearchBar
+              placeholder="Search for countries"
+              color={colorTheme}
+              onInputChange={searchName}
+            />
           </S.SearchBar>
           <S.SelectRegion>
             <Select
@@ -49,7 +60,7 @@ const HomePage = ({ color, selectRegion, countries }: HomePageProps) => {
         </S.Filters>
         <S.CardGroup>
           <CardGroup
-            countries={countries}
+            countries={countriesFiltered ? countriesFiltered : countries}
             region={regionSelect}
             filter={isRegionSelected}
           />

@@ -1,6 +1,6 @@
-import * as S from './styles'
 import { Search } from '@styled-icons/heroicons-solid/Search'
-import { useState, InputHTMLAttributes } from 'react'
+import { InputHTMLAttributes, useState } from 'react'
+import * as S from './styles'
 
 export type SearchBarProps = {
   onInputChange?: (value: string) => void
@@ -37,6 +37,7 @@ const SearchBar = ({
           type="text"
           onChange={onChange}
           value={value}
+          autoComplete="no"
           {...(label ? { id: name } : {})}
           {...props}
         />
