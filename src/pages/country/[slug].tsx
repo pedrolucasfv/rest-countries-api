@@ -30,13 +30,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         population: `${country.data.population}`,
         region: country.data.region,
         subregion: country.data.region,
-        capital: country.data.capital[0],
+        capital: country.data.capital,
         topLevelDomain: country.data.tld,
         currencies: country?.data.currencies[currency].name,
         languages: languages.map(
           (language) => country.data.languages[language]
         ),
-        borderCountries: country?.data.borders[0] ? country.data.borders : null
+        borderCountries: country.data.borders[0] ? country.data.borders : null
       },
       flag: country?.data.flags.png
     }
