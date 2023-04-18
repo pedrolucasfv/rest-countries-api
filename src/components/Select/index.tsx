@@ -23,6 +23,7 @@ const Select = ({
         aria-hidden={!isOpen}
         onClick={() => setIsOpen(false)}
         isOpen={!isOpen}
+        color={color}
       >
         {items.map((item, index) => (
           <S.Item

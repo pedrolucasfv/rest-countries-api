@@ -44,3 +44,32 @@ export const Filters = styled.div`
   `}
   margin: 3rem 0;
 `
+export const Button = styled.div`
+  ${({ theme, color }) => css`
+    position: fixed;
+    right: 2%;
+    bottom: 5%;
+    border-radius: 2rem;
+    ${color == 'dark' &&
+    css`
+      border: 0.5rem solid ${theme.colors.darkBlue};
+      background-color: ${theme.colors.veryDarkBlue2};
+      color: ${theme.colors.white};
+    `}
+    ${color == 'light' &&
+    css`
+      border: 0.5rem solid ${theme.colors.white};
+      background-color: ${theme.colors.lightBg};
+    `}
+    
+    box-shadow: inset 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+      inset 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+      inset 0px 1px 5px 0px rgba(0, 0, 0, 0.12),
+      3px 0px 1px -2px rgba(0, 0, 0, 0.2), 2px 0px 2px 0px rgba(0, 0, 0, 0.14),
+      1px 0px 5px 0px rgba(0, 0, 0, 0.12);
+    font-size: 2rem;
+    padding: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+  `}
+`

@@ -68,6 +68,7 @@ const HomePage = ({ color, selectRegion, countries }: HomePageProps) => {
           />
         </S.CardGroup>
       </S.Content>
+      <S.Button color={colorTheme}>Voltar ao início</S.Button>
     </S.Wrapper>
   )
 }

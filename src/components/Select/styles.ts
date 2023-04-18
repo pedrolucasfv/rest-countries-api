@@ -59,15 +59,27 @@ type ItemsProps = {
   isOpen: boolean
 }
 
-export const Items = styled.div<ItemsProps>`
-  ${({ isOpen, theme }) => css`
+export const Items = styled.div<ItemsProps & ColorProps>`
+  ${({ isOpen, theme, color }) => css`
     display: flex;
     align-items: center;
     overflow: hidden;
     ${media.greaterThan('medium')`
     transition: width 1s;
     width: ${isOpen ? '0rem' : '65rem'};
-    border: 0.1rem solid ${theme.colors.white};
+
+    ${
+      color == 'dark' &&
+      css`
+        border: 0.1rem solid ${theme.colors.white};
+      `
+    }
+    ${
+      color == 'light' &&
+      css`
+        border: 0.1rem solid ${theme.colors.darkBlue};
+      `
+    }
     `}
     ${media.lessThan('medium')`
     transition: height 1s;
