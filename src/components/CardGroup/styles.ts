@@ -1,9 +1,18 @@
 import styled, { css } from 'styled-components'
+import media from 'styled-media-query'
 
 export const Wrapper = styled.main`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+
+  ${media.greaterThan('medium')`
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 10rem;  
+  `}
+  ${media.greaterThan('huge')`
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 5rem;  
+
+  `}
 `
 type CardsProps = {
   index: number

@@ -24,7 +24,10 @@ export const SelectRegion = styled.div``
 
 export const SearchBar = styled.div``
 
-export const CardGroup = styled.div``
+export const CardGroup = styled.div`
+  display: flex;
+  justify-content: center;
+`
 
 export const Content = styled.div`
   padding: 0 6rem;

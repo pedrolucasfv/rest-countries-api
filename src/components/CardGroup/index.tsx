@@ -17,7 +17,6 @@ const CardGroup = ({ region, filter = false, countries }: CardGroupProps) => {
     const intersectionObserver = new IntersectionObserver((entries) => {
       if (entries.some((entry) => entry.isIntersecting)) {
         setLimitCards((limitCards) => limitCards + 6)
-        console.log('kkkkk')
       }
     })
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
