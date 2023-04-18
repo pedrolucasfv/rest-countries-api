@@ -1,4 +1,5 @@
 import styled, { css, DefaultTheme } from 'styled-components'
+import media from 'styled-media-query'
 
 type ColorProps = {
   color: 'light' | 'dark'
@@ -36,5 +37,8 @@ export const Content = styled.div`
 export const Filters = styled.div`
   display: flex;
   justify-content: space-between;
+  ${media.lessThan('medium')`
+    flex-direction: column;
+  `}
   margin: 3rem 0;
 `

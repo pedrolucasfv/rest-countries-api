@@ -19,14 +19,16 @@ export const Wrapper = styled.main`
   font-size: 2rem;
   font-weight: 600;
   cursor: pointer;
+  display: flex;
 `
 
 export const Title = styled.div``
 
-export const SelectBox = styled.div<ColorProps>`
-  ${({ color, theme }) => css`
+export const SelectBox = styled.div<ColorProps & ItemsProps>`
+  ${({ color, theme, isOpen }) => css`
     height: 5rem;
-    padding: 1.5rem;
+    padding: 1.5rem 1rem;
+    padding-left: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -34,24 +36,46 @@ export const SelectBox = styled.div<ColorProps>`
 
     ${wrapperModifiers[color](theme)}
     svg {
+      padding-inline: 1rem;
       height: 3rem;
+      transition: rotate 1s;
+      rotate: ${isOpen ? '0deg' : '180deg'};
     }
   `}
 `
-export const Items = styled.div<ColorProps>`
-  ${({ color, theme }) => css`
-    margin-top: 0.5rem;
-    padding: 1.5rem;
-    ${wrapperModifiers[color](theme)}
-    animation: clickAnimation 0.3s forwards;
 
-    @keyframes clickAnimation {
-      from {
-        height: 0;
-      }
-      to {
-        height: 17rem;
-      }
-    }
+type ItemsProps = {
+  isOpen: boolean
+}
+
+export const Items = styled.div<ItemsProps>`
+  ${({ isOpen, theme }) => css`
+    border: 0.1rem solid ${theme.colors.white};
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    transition: width 1s;
+    width: ${isOpen ? '0rem' : '65rem'};
+  `}
+`
+export const Clear = styled.div<ColorProps>`
+  ${({ color, theme }) => css`
+    ${color == 'dark' &&
+    css`
+      color: ${theme.colors.white};
+    `}
+    ${color == 'light' &&
+    css`
+      color: ${theme.colors.darkBlue};
+    `}
+    margin-left: 3rem;
+  `}
+`
+
+export const Item = styled.div<ColorProps>`
+  ${({ color, theme }) => css`
+    ${wrapperModifiers[color](theme)};
+    padding: 0.5rem 1.5rem;
+    margin-inline: 0.5rem;
   `}
 `

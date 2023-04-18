@@ -1,4 +1,5 @@
-import { ArrowDownS } from '@styled-icons/remix-line/ArrowDownS'
+import { ArrowLeftS } from '@styled-icons/remix-line/ArrowLeftS'
+
 import { useState } from 'react'
 import * as S from './styles'
 
@@ -18,23 +19,32 @@ const Select = ({
   const [isOpen, setIsOpen] = useState(false)
   return (
     <S.Wrapper>
-      <S.SelectBox color={color} onClick={() => setIsOpen(!isOpen)}>
+      <S.Items
+        aria-hidden={!isOpen}
+        onClick={() => setIsOpen(false)}
+        isOpen={!isOpen}
+      >
+        {items.map((item, index) => (
+          <S.Item
+            key={index}
+            onClick={() => regionSelected(item)}
+            color={color}
+          >
+            {item}
+          </S.Item>
+        ))}
+        <S.Clear color={color} onClick={() => regionSelected('clear')}>
+          Limpar
+        </S.Clear>
+      </S.Items>
+      <S.SelectBox
+        color={color}
+        onClick={() => setIsOpen(!isOpen)}
+        isOpen={isOpen}
+      >
+        <ArrowLeftS />
         <S.Title role="heading">{title}</S.Title>
-        <ArrowDownS />
       </S.SelectBox>
-      {isOpen && (
-        <S.Items
-          aria-hidden={!isOpen}
-          color={color}
-          onClick={() => setIsOpen(false)}
-        >
-          {items.map((item, index) => (
-            <S.Title key={index} onClick={() => regionSelected(item)}>
-              {item}
-            </S.Title>
-          ))}
-        </S.Items>
-      )}
     </S.Wrapper>
   )
 }

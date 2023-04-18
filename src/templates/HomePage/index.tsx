@@ -27,7 +27,10 @@ const HomePage = ({ color, selectRegion, countries }: HomePageProps) => {
     const filter = countries.filter((country) => {
       if (country.region == region) return country
     })
-    setCountriesFiltered(filter)
+
+    if (region == 'clear') {
+      setCountriesFiltered(countries)
+    } else setCountriesFiltered(filter)
   }
 
   const searchName = (value: string) => {
