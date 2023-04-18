@@ -12,7 +12,9 @@ export type MenuProps = {
 const Menu = ({ color = 'light', changeColor }: MenuProps) => (
   <S.Wrapper color={color}>
     <Link href="/" passHref>
-      <S.Logo role="button">Where in the world?</S.Logo>
+      <S.Logo color={color} role="button">
+        Where in the world?
+      </S.Logo>
     </Link>
     {color == 'light' && (
       <S.Button onClick={() => changeColor()}>

@@ -19,6 +19,7 @@ const wrapperModifiers = {
 export const Wrapper = styled.main<ColorProps>`
   ${({ theme, color }) => css`
     ${color && wrapperModifiers[color](theme)};
+    min-height: 100vh;
   `}
 `
 

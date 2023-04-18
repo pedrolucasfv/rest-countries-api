@@ -27,11 +27,21 @@ export const Wrapper = styled.main<WrapperProps>`
   `}
 `
 
-export const Logo = styled.a`
-  font-size: 2.2rem;
-  font-weight: 650;
-  text-decoration: none;
-  cursor: pointer;
+export const Logo = styled.a<WrapperProps>`
+  ${({ theme, color }) => css`
+    font-size: 2.2rem;
+    font-weight: 650;
+    text-decoration: none;
+    cursor: pointer;
+    ${color == 'dark' &&
+    css`
+      color: ${theme.colors.white};
+    `}
+    ${color == 'light' &&
+    css`
+      color: ${theme.colors.darkBlue};
+    `}
+  `}
 `
 
 export const Button = styled.div``
